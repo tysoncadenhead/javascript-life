@@ -1,0 +1,28 @@
+{
+  "name": "ko.ninja",
+  "version": "0.0.3",
+  "main": "dist/ko.ninja.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout.js": "~2.3.0",
+    "qunit": "~1.12.0",
+    "underscore": "1.5.2"
+  },
+  "homepage": "https://github.com/jcreamer898/ko.ninja",
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.3",
+    "commit": "4c71b95848aea2170029d24549fcdc3b5d683fb0"
+  },
+  "_source": "git://github.com/jcreamer898/ko.ninja.git",
+  "_target": "~0.0.3",
+  "_originalSource": "ko.ninja",
+  "_direct": true
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>ko.ninja - localStorage</title>
+    <link rel="stylesheet" type="text/css" href="http://knockoutjs.com/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+<body id="wrapper">
+
+    <br /><br />
+
+    <a href="/">&lt; back</a>
+
+    <br /><br />
+
+    <img src="https://raw.github.com/jcreamer898/ko.ninja/master/ko-ninja.gif" alt="" style="max-width:100%;">
+
+    <br /><br />
+
+    <h3>Local Storage Example</h3>
+
+    <p>This list is populated and updated using HTML5 local storage.<br />To see how it works, take a look at the source code, or check out out the <a href="https://github.com/jcreamer898/ko.ninja">documentation</a>.</p>
+
+    <div class="liveExample">
+
+        <div id="list">
+            <form data-bind="submit:addItem">
+                Add item: <input type="text" data-bind='value:itemToAdd, valueUpdate: "afterkeydown"' />
+                <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+            </form>
+             
+            <p>Your values:</p>
+            <select multiple="multiple" height="5" data-bind="options:allItems, selectedOptions:selectedItems"> </select>
+             
+            <div>
+                <button data-bind="click: removeSelected, enable: selectedItems().length > 0">Remove</button>
+                <button data-bind="click: sortItems, enable: allItems().length > 1">Sort</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script data-main="../../ko.ninja.js" src="http://requirejs.org/docs/release/2.1.9/minified/require.js"></script>
+    <script src="../../ko.ninja.requireConfig.js"></script>
+    <script>
+        require(['ko.ninja'], function (ko) {
+            var ListViewModel = ko.ViewModel.extend({
+
+                el: '#list',
+
+                observables: {
+                    itemToAdd: '',
+                    allItems: ['Green Eggs', 'Ham'],
+                    selectedItems: ['Ham'],
+                    id: '1'
+                },
+
+                model: {
+                    storage: 'localStorage',
+                    name: 'list'
+                },
+
+                addItem: function () {
+                    if ((this.itemToAdd() != '') && (this.allItems.indexOf(this.itemToAdd()) < 0)) {
+                        this.allItems.push(this.itemToAdd());
+                    }
+                    this.itemToAdd('');
+                },
+
+                removeSelected: function () {
+                    this.allItems.removeAll(this.selectedItems());
+                    this.selectedItems([]);
+                },
+
+                sortItems: function () {
+                    this.allItems.sort();
+                }
+
+            });
+
+            new ListViewModel();
+        });
+    </script>
+
+</body>
+</html>
