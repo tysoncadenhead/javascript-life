@@ -1,0 +1,19 @@
+{
+  "name": "javascript-life",
+  "version": "0.0.0",
+  "description": "JavaScript implementation of Conways game of life",
+  "main": "server.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "author": "Tyson Cadenhead",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-mocha": "~0.4.10",
+    "grunt-contrib-compass": "~0.7.2",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}

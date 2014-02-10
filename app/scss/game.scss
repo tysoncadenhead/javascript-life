@@ -1,0 +1,13 @@
+.row {
+    clear: both;
+}
+
+.cell {
+    cursor: pointer;
+    text-align: center;
+    float: left;
+
+    .dead {
+        color: #CCC;
+    }
+}

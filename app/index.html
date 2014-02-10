@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Game of Life</title>
+        <link rel="stylesheet" href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="js/bower_components/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/game.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>JavaScript Game of Life</h1>
+            <p>This is a JavaScript port of the Game of Life devised by the British mathematician John Horton Conway in 1970.</p>
+            <div id="game-of-life">
+                <div class="col-md-10">
+                    <div class="board" data-bind="with: board">
+                        <div data-bind="foreach: rows">
+                            <div data-bind="foreach: cells" class="row">
+                                <div class="cell" data-bind="{
+                                    click: click,
+                                    style: { width: (100 / $parent.cells().length) + '%' }
+                                }">
+                                    <div data-bind="if: alive()" class="alive"><i class="fa fa-smile-o"></i></div>
+                                    <div data-bind="if: !alive()" class="dead"><i class="fa fa-frown-o"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="well info">
+                        <div>Generation: <span data-bind="text: generations().length">0</span></div>
+                        <div>Living: <span data-bind="text: board.alive()">0</span></div>
+                    </div>
+                    <div class="btn-group">
+                        <button data-bind="click: previous" class="btn btn-default">
+                            <i class="fa fa-arrow-circle-left"></i>
+                        </button>
+                        <button data-bind="click: play" class="btn btn-primary">
+                            <i data-bind="if: !playing()" class="fa fa-play-circle"></i>
+                            <i data-bind="if: playing()" class="fa fa-pause-circle"></i>
+                        </button>
+                        <button data-bind="click: next" class="btn btn-default">
+                            <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/bower_components/requirejs/require.js" data-main="js/main"></script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "javascript-life",
+  "version": "0.0.0",
+  "authors": [
+    "Tyson Cadenhead <tysoncadenhead@gmail.com>"
+  ],
+  "main": "app/js/main.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.10",
+    "knockout.js": "~3.0.0",
+    "bootstrap": "~3.1.0",
+    "ko.ninja": "~0.0.3",
+    "underscore": "~1.5.2",
+    "postal.js": "~0.8.11",
+    "assert": "~0.0.2",
+    "mocha": "~1.17.1",
+    "squire": "*",
+    "font-awesome": "~4.0.3"
+  }
+}
