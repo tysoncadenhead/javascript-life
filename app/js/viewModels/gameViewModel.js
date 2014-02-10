@@ -25,6 +25,7 @@ define([
         onChange: {
 
             /**
+            * Fired when the rows observable changes
             * @event
             * @param {Int} number
             */
@@ -37,6 +38,7 @@ define([
             },
 
             /**
+            * Fired when the cells observable changes
             * @event
             * @param {Int} number
             */
@@ -47,6 +49,7 @@ define([
         },
 
         /**
+        * Toggles the settings
         * @method settings
         */
         settings: function () {
@@ -54,6 +57,7 @@ define([
         },
 
         /**
+        * Goes to the previous generation
         * @method previous
         */
         previous: function () {
@@ -64,6 +68,7 @@ define([
         },
 
         /**
+        * Goes to the next generation
         * @method next
         */
         next: function () {
@@ -72,6 +77,7 @@ define([
         },
 
         /**
+        * Stops the playing
         * @method stop
         */
         stop: function () {
@@ -80,6 +86,7 @@ define([
         },
 
         /**
+        * Starts the playing
         * @method play
         */
         play: function () {
@@ -98,6 +105,7 @@ define([
         },
 
         /**
+        * Adds certain cells to be alive to start with based on an external array
         * @method initalConfig
         */
         initialConfig: function () {
@@ -107,6 +115,7 @@ define([
         },
 
         /**
+        * Initializes the game viewModel
         * @method init
         */
         init: function () {

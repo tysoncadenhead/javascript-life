@@ -21,6 +21,7 @@ define([
         subscriptions: {
 
             /**
+            * Published when we want to see a previous generation
             * @event
             * @param {Object} data
             */
@@ -29,6 +30,7 @@ define([
             },
 
             /**
+            * Published when we want to see the next generation
             * @event
             * @param {Object} data
             */
@@ -46,6 +48,7 @@ define([
             },
 
             /**
+            * Published from the game to set certain cells as live before there is any user input
             * @event
             * @param {Array} data
             */
@@ -58,6 +61,7 @@ define([
         },
 
         /**
+        * Toggle the alive observable boolean
         * @method click
         */
         click: function () {
@@ -65,6 +69,7 @@ define([
         },
 
         /**
+        * Converts the cell to JSON for easier saving and publishing
         * @method toJSON
         */
         toJSON: function () {
@@ -76,7 +81,9 @@ define([
         },
 
         /**
+        * Returns the number of neighbors to the cell
         * @method getNeighbors
+        * @param {Array} rows
         */
         getLivingNeighbors: function (rows) {
 

@@ -16,6 +16,11 @@ define([
         observables: {
             cells: [],
             position: 0,
+
+            /**
+            * Returns the number of cells in the row that are alive
+            * @ko.computed alive
+            */
             alive: function () {
                 var count = 0,
                     cells = this.cells();
@@ -32,6 +37,7 @@ define([
         subscriptions: {
 
             /**
+            * Fired when the number of cells changes
             * @event
             */
             'cells.update': function (number) {
@@ -48,6 +54,7 @@ define([
         },
 
         /**
+        * Converts the row to JSON format
         * @method toJSON
         */
         toJSON: function () {

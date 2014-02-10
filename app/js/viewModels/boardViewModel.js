@@ -13,7 +13,13 @@ define([
     return ViewModel.extend({
 
         observables: {
+
             rows: [],
+
+            /**
+            * Returns the number of cells in the rows that are alive
+            * @ko.computed alive
+            */
             alive: function () {
                 var count = 0,
                     rows = this.rows();
@@ -23,11 +29,13 @@ define([
                 }
                 return count;
             }
+
         },
 
         subscriptions: {
 
             /**
+            * Published when we want to set the number of rows
             * @event
             * @param {Int} number
             */
@@ -44,6 +52,7 @@ define([
         },
 
         /**
+        * Converts the board to JSON
         * @method toJSON
         */
         toJSON: function () {
