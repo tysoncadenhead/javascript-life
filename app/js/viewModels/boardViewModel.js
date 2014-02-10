@@ -1,10 +1,9 @@
 /*global define */
 
 define([
-    'underscore',
     'lib/baseViewModel',
     'viewModels/rowViewModel'
-], function (_, ViewModel, RowViewModel) {
+], function (ViewModel, RowViewModel) {
 
     'use strict';
 
@@ -16,10 +15,12 @@ define([
         observables: {
             rows: [],
             alive: function () {
-                var count = 0;
-                _.each(this.rows(), function (row) {
-                    count += row.alive();
-                });
+                var count = 0,
+                    rows = this.rows();
+
+                for (var i = 0; i < rows.length; i++) {
+                    count += rows[i].alive();
+                }
                 return count;
             }
         },
@@ -46,10 +47,11 @@ define([
         * @method toJSON
         */
         toJSON: function () {
-            var rows = [];
-            _.each(this.rows(), function (row) {
-                rows.push(row.toJSON());
-            });
+            var rows = [],
+                rowsArr = this.rows();
+            for (var i = 0; i < rowsArr.length; i++) {
+                rows.push(rowsArr[i].toJSON());
+            }
             return {
                 rows: rows
             };

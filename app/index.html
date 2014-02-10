@@ -8,13 +8,23 @@
     </head>
     <body>
         <div class="container">
+
+            <!-- Title and Description -->
             <h1>JavaScript Game of Life</h1>
             <p>This is a JavaScript port of the Game of Life devised by the British mathematician John Horton Conway in 1970.</p>
+
+            <!-- Game Bindings -->
             <div id="game-of-life">
                 <div class="col-md-10">
+
+                    <!-- Board -->
                     <div class="board" data-bind="with: board">
                         <div data-bind="foreach: rows">
+
+                            <!-- Row -->
                             <div data-bind="foreach: cells" class="row">
+
+                                <!-- Cell -->
                                 <div class="cell" data-bind="{
                                     click: click,
                                     style: { width: (100 / $parent.cells().length) + '%' },
@@ -26,15 +36,20 @@
                                         <div class="inner"></div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2">
+
+                    <!-- Display -->
                     <div class="well info">
                         <div>Generation: <span data-bind="text: generations().length">0</span></div>
                         <div>Living: <span data-bind="text: board.alive()">0</span></div>
                     </div>
+
+                    <!-- Buttons -->
                     <div class="btn-group">
                         <button data-bind="click: previous" class="btn btn-default" title="Previous Generation">
                             <i class="fa fa-arrow-circle-left"></i>
@@ -43,7 +58,7 @@
                             <i data-bind="css: {
                                 'fa-play-circle': !playing(),
                                 'fa-pause': playing()
-                            }" class="fa"></i>
+                            }" class="fa fa-play-circle"></i>
                         </button>
                         <button data-bind="click: next" class="btn btn-default" title="Next Generation">
                             <i class="fa fa-arrow-circle-right"></i>
@@ -52,13 +67,16 @@
                             <i class="fa fa-cogs"></i>
                         </button>
                     </div>
-                    <div data-bind="visible: settingsVisible()" class="settings">
+
+                    <!-- Rows and Cells Config -->
+                    <div data-bind="css: { invisible: !settingsVisible() }" class="settings invisible">
                         <label>Rows</label>
                         <input type="text" data-bind="value: rows" />
                         <label>Cells</label>
                         <input type="text" data-bind="value: cells" />
                     </div>
                 </div>
+
             </div>
         </div>
         <script src="js/bower_components/requirejs/require.js" data-main="js/main"></script>
