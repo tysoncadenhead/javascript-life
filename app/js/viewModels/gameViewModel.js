@@ -30,7 +30,14 @@ define([
             * @param {Int} number
             */
             'rows': function (number) {
+                var rows = this.board.rows();
                 this.generations([]);
+
+                // Unsubscribe from all postal messages
+                for (var i = 0; i < rows.length; i++) {
+                    rows[i].unsubscribeAll();
+                }
+
                 this.publish('rows.update', parseInt(number, 10));
                 if (typeof number === 'string') {
                     this.publish('cells.update', parseInt(this.cells(), 10));
@@ -43,9 +50,36 @@ define([
             * @param {Int} number
             */
             'cells': function (number) {
+                var rows = this.board.rows();
                 this.generations([]);
+
+                // Unsubscribe from all postal messages
+                for (var i = 0; i < rows.length; i++) {
+                    for (var j = 0; j < rows[i].cells.length; j++) {
+                        rows[i].cells[j].unsubscribeAll();
+                    }
+                }
+                
                 this.publish('cells.update', parseInt(number, 10));
             }
+        },
+
+        /**
+        * Resets the board
+        * @method reset
+        */
+        reset: function () {
+            this.generations([]);
+            this.publish('cells.reset');
+        },
+
+        /**
+        * Randomly turn the cells on or off
+        * @method random
+        */
+        random: function () {
+            this.generations([]);
+            this.publish('generation.random');
         },
 
         /**

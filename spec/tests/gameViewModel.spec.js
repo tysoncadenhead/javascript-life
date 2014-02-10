@@ -17,7 +17,8 @@ define([
 
             injector.mock({
                 'viewModels/boardViewModel': sinon.stub().returns({
-                    toJSON: sinon.stub().returns({})
+                    toJSON: sinon.stub().returns({}),
+                    rows: sinon.stub().returns([])
                 }),
                 'data/initialConfig': sinon.stub().returns([])
             });

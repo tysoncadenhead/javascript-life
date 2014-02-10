@@ -1,6 +1,8 @@
 /* global mocha, require, requirejs */
 require(['../app/js/config'], function () {
 
+    'use strict';
+
     requirejs.config({
         baseUrl: '../app/js',
         paths: {
@@ -16,10 +18,8 @@ require(['../app/js/config'], function () {
     });
 
     require([
-        'underscore',
-        'assert',
-        'knockout'
-    ], function (_, assert, ko) {
+        'assert'
+    ], function () {
 
         mocha.setup('bdd');
         require([

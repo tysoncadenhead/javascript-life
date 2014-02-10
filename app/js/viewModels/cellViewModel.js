@@ -15,10 +15,30 @@ define([
         observables: {
             alive: false,
             position: 0,
-            row: 0
+            row: 0,
+            hasLived: false
         },
 
         subscriptions: {
+
+            /**
+            * Resets the cells to be dead and never alive
+            * @event
+            */
+            'cells.reset': function () {
+                this.hasLived(false);
+                this.alive(false);
+            },
+
+            /**
+            * Randomly makes the cell alive or dead. There is a one in four chance it will be alive
+            * @event
+            */
+            'generation.random': function () {
+                var number = Math.floor(Math.random() * 6) + 1;
+                this.hasLived(false);
+                this.alive((number === 4));
+            },
 
             /**
             * Published when we want to see a previous generation
@@ -58,6 +78,19 @@ define([
                 }
             }
 
+        },
+
+        onChange: {
+
+            /**
+            * When the alive state changes, if it is set to true, we can determine that the cell has lived at one time
+            * @event
+            */
+            'alive': function (alive) {
+                if (alive) {
+                    this.hasLived(true);
+                }
+            }
         },
 
         /**
