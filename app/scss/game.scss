@@ -1,13 +1,45 @@
+.container {
+    padding-bottom: 50px;
+}
+
 .row {
     clear: both;
 }
 
 .cell {
+    height: 22px;
     cursor: pointer;
-    text-align: center;
     float: left;
 
-    .dead {
-        color: #CCC;
+    .padding {
+        height: 100%;
+        padding: 1px;
+    }
+
+    .inner {
+        border: solid 1px #CCC;
+        background: #EEE;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.cell-alive {
+    .inner {
+        border: solid 1px #3c763d;
+        background: #dff0d8;
+    }
+}
+
+.settings {
+    padding-top: 20px;
+}
+
+@media (max-width: 990px) {
+    .col-md-2 {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 30px;
+        padding: 0px;
     }
 }

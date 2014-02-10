@@ -18,7 +18,8 @@ define([
             rows: 0,
             cells: 0,
             generations: [],
-            playing: false
+            playing: false,
+            settingsVisible: false
         },
 
         onChange: {
@@ -28,6 +29,7 @@ define([
             * @param {Int} number
             */
             'rows': function (number) {
+                this.generations([]);
                 this.publish('rows.update', number);
             },
 
@@ -36,8 +38,16 @@ define([
             * @param {Int} number
             */
             'cells': function (number) {
+                this.generations([]);
                 this.publish('cells.update', number);
             }
+        },
+
+        /**
+        * @method settings
+        */
+        settings: function () {
+            this.settingsVisible(!this.settingsVisible());
         },
 
         /**

@@ -23,7 +23,7 @@ module.exports = function (grunt) {
                     hostname: '*',
                     port: 1111,
                     base: '.',
-                    keepalive: true
+                    keepalive: false
                 }
             },
             server: {
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-mocha');
 
-    grunt.registerTask('test', ['connect', 'mocha']);
+    grunt.registerTask('test', ['connect:test', 'mocha']);
     grunt.registerTask('server', ['connect:server', 'watch']);
 
 };

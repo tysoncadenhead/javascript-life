@@ -17,10 +17,14 @@
                             <div data-bind="foreach: cells" class="row">
                                 <div class="cell" data-bind="{
                                     click: click,
-                                    style: { width: (100 / $parent.cells().length) + '%' }
+                                    style: { width: (100 / $parent.cells().length) + '%' },
+                                    css: {
+                                        'cell-alive': alive()
+                                    }
                                 }">
-                                    <div data-bind="if: alive()" class="alive"><i class="fa fa-smile-o"></i></div>
-                                    <div data-bind="if: !alive()" class="dead"><i class="fa fa-frown-o"></i></div>
+                                    <div class="padding">
+                                        <div class="inner"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -32,16 +36,25 @@
                         <div>Living: <span data-bind="text: board.alive()">0</span></div>
                     </div>
                     <div class="btn-group">
-                        <button data-bind="click: previous" class="btn btn-default">
+                        <button data-bind="click: previous" class="btn btn-default" title="Previous Generation">
                             <i class="fa fa-arrow-circle-left"></i>
                         </button>
-                        <button data-bind="click: play" class="btn btn-primary">
+                        <button data-bind="click: play" class="btn btn-default" title="Play Life">
                             <i data-bind="if: !playing()" class="fa fa-play-circle"></i>
                             <i data-bind="if: playing()" class="fa fa-pause-circle"></i>
                         </button>
-                        <button data-bind="click: next" class="btn btn-default">
+                        <button data-bind="click: next" class="btn btn-default" title="Next Generation">
                             <i class="fa fa-arrow-circle-right"></i>
                         </button>
+                        <button data-bind="click: settings" class="btn btn-default" title="Settings">
+                            <i class="fa fa-cogs"></i>
+                        </button>
+                    </div>
+                    <div data-bind="visible: settingsVisible()" class="settings">
+                        <label>Rows</label>
+                        <input type="text" data-bind="value: rows" />
+                        <label>Cells</label>
+                        <input type="text" data-bind="value: cells" />
                     </div>
                 </div>
             </div>
