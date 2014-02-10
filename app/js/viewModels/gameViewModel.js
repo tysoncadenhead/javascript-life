@@ -30,7 +30,10 @@ define([
             */
             'rows': function (number) {
                 this.generations([]);
-                this.publish('rows.update', number);
+                this.publish('rows.update', parseInt(number, 10));
+                if (typeof number === 'string') {
+                    this.publish('cells.update', parseInt(this.cells(), 10));
+                }
             },
 
             /**
@@ -39,7 +42,7 @@ define([
             */
             'cells': function (number) {
                 this.generations([]);
-                this.publish('cells.update', number);
+                this.publish('cells.update', parseInt(number, 10));
             }
         },
 

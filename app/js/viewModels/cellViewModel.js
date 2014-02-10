@@ -79,6 +79,11 @@ define([
         * @method getNeighbors
         */
         getLivingNeighbors: function (rows) {
+
+            if (!rows[this.row()]) {
+                return;
+            }
+
             var livingCount = 0,
                 neighbors = [
                     rows[this.row()].cells[this.position() - 1],
